@@ -7,29 +7,29 @@ const routes = [
     component: () => import ('../views/HomeView.vue')
   },
   {
-    path: '/admin',
+    path: '/admin/:usuario',
     name: 'admin',
-    component: () => import('../views/AdminView.vue')
+    component: () => import('../views/Usuarios/AdminView.vue')
   },
   {
-    path: '/products',
+    path: '/products/:usuario',
     name: 'products',
-    component: () => import('../views/ProductsView.vue')
+    component: () => import('../views/Stock/ProductsView.vue')
   },
   {
-    path: '/stock',
+    path: '/stock/:usuario',
     name: 'stock',
-    component: () => import('../views/StockView.vue')
+    component: () => import('../views/Stock/StockView.vue')
   },
   {
     path: '/login',
     name: 'login',
-    component: () => import('../views/LoginView.vue')
+    component: () => import('../views/LogIn/LoginView.vue')
   },
   {
     path: '/register',
     name: 'register',
-    component: () => import('../views/RegisterView.vue')
+    component: () => import('../views/LogIn/RegisterView.vue')
   }
 ]
 

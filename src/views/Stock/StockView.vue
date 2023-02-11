@@ -1,4 +1,4 @@
-<template>
+<template @show="this.$route.params.usuario === 'franco'">
     <div class="container">
         <div class="card">
             <div class="card-title">

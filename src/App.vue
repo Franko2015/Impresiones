@@ -1,9 +1,9 @@
 <template>
   <nav>
-    <router-link to="/login">Inicio</router-link> |
-    <router-link to="/admin">Administración</router-link> |
-    <router-link to="/products">Productos</router-link> |
-    <router-link to="/stock">Stock</router-link>
+    <router-link to="/login" >Inicio</router-link> |
+    <router-link to="/admin/{{ this.$route.params.usuario }}">Administración</router-link> |
+    <router-link to="/products/{{ this.$route.params.usuario }}">Productos</router-link> |
+    <router-link to="/stock/{{ this.$route.params.usuario }}">Stock</router-link>
   </nav>
   <router-view/>
 </template>

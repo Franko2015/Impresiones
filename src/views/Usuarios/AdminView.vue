@@ -15,7 +15,7 @@
         </thead>
         <tbody>
           <tr v-for="(item, index) in filtros" :key="index">
-            <td>{{ item.usuario }} <label @if="item.usuario = ''">No hay registros</label></td>
+            <td>{{ item.usuario }} <label @show="item.usuario">{{ error }}</label></td>
             <td>
               <input type="checkbox" class="btn" v-model="item.estado" />
             </td>
@@ -31,7 +31,8 @@ export default {
   data() {
     return {
       estado: false,
-      Usuarios: []
+      Usuarios: [],
+      error: ""
     }
   },
   methods: {
@@ -55,6 +56,8 @@ export default {
 
     if (data != null) {
       this.Usuarios = JSON.parse(data);
+    }else{
+      this.error = "No hay registros"
     }
   },
 };

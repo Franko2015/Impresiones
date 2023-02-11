@@ -1,45 +1,53 @@
 <template>
   <div class="login">
     <form class="form">
-      <input class="form-control" type="user" id="user" required placeholder="Usuario" v-model="user">
+      <input class="form-control" type="user" id="user" placeholder="Usuario" v-model="user" required>
       <br>
-      <input class="form-control" type="pass" id="pass" placeholder="Contraseña" v-model="pass" required>
+      <input class="form-control" type="password" id="pass" placeholder="Contraseña" v-model="con1" required />
+      <br>
+      <input class="form-control" type="password" id="pass" placeholder="Repite la contraseña" v-model="con2" required/>
       <div class="col">
-        <input class="btn btn-primary m-3 p-2" type="button" value="Ingresar" @click="validar" />
-        <router-link class="btn btn-success m-3 p-2" type="button" to="/register">Registrarse</router-link>
+        <label v-show="error != false" class="text-label text-white">Contraseña no es la misma</label>
+        <input class="btn btn-success m-3 p-2" type="button" value="Registrar" @click="register" />
+        <router-link class="btn btn-primary m-3 p-2" type="button" to="/login">Ingresar</router-link>
       </div>
     </form>
-    <div v-if="error == true">
-      Hola
-    </div>
   </div>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
-      error: false,
       user: "",
-      pass: "",
+      con1: "",
+      con2: "",
       Usuarios: [],
+      error: false
     };
   },
   methods: {
-    validar() {
-      var usuario = {
+    register() {
+
+      var users = {
         usuario: this.user,
-        contrasena: this.pass
+        con: this.con1,
+        estado: false
       }
-      this.filtros().split(',')
-      
-      if (this.user == "franco" && this.pass == "franco") {
-        alert("hola que tal")
-        this.Usuarios.push(usuario)
-        this.$router.push("/products");
+
+      if (this.con1 == this.con2) {
+        this.Usuarios.push(users)
+        this.guardar()
+        alert("USUARIO CREADO CON ÉXITO!")
+        this.$router.push("/login");
       } else {
-        alert("Wdasda")
+        this.error = true
       }
+
+    },
+    guardar() {
+      localStorage.setItem("Usuarios", JSON.stringify(this.Usuarios));
     }
   },
   computed: {
@@ -55,6 +63,7 @@ export default {
     }
   },
 }
+
 </script>
 
 <style lang="scss" scoped>
