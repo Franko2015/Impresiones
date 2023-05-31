@@ -1,13 +1,17 @@
 <template>
-  <nav>
-    <router-link to="/login" >Inicio</router-link> |
-    <router-link to="/admin/{{ this.$route.params.usuario }}">Administración</router-link> |
-    <router-link to="/products/{{ this.$route.params.usuario }}">Productos</router-link> |
-    <router-link to="/stock/{{ this.$route.params.usuario }}">Stock</router-link>
-  </nav>
+  <navegation></navegation>
   <router-view/>
 </template>
+<script>
 
+import navegation from './views/RouterNav.vue'
+
+export default{
+  components: {
+    navegation
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

@@ -9,8 +9,8 @@
         <router-link class="btn btn-success m-3 p-2" type="button" to="/register">Registrarse</router-link>
       </div>
     </form>
-    <div v-if="error == true">
-      Hola
+    <div v-if="error == true" class="text-white">
+      {{ mensaje }}
     </div>
   </div>
 </template>
@@ -23,6 +23,7 @@ export default {
       user: "",
       pass: "",
       Usuarios: [],
+      mensaje: ""
     };
   },
   methods: {
@@ -37,11 +38,11 @@ export default {
       var verify = !!this.Usuarios.find(element => element.usuario === this.user && element.con === this.pass)
 
       if (verify) {
-        // window.location = 'verificacion.html';
         alert('¡Correo y contraseña correctos!')
-        this.$router.push("/App.vue/:" + this.user)
+        this.$router.push({ name: "home"})
       } else {
-        alert('Correo o contraseña incorrecta');
+        this.error = true;
+        this.mensaje = 'Usuario o contraseña incorrecta';
       }
     }
   },

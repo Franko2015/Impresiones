@@ -97,7 +97,7 @@ export default {
             if (this.Producto != "" || this.Tamaño != "" || this.Precio != 0) {
                 this.Productos.push(datos);
                 this.guardar();
-
+                this.$router.push({ name: "home"})
                 alert("PRODUCTO INGRESADO CON ÉXITO!");
 
             } else {

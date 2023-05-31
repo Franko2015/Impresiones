@@ -5,9 +5,12 @@
       <br>
       <input class="form-control" type="password" id="pass" placeholder="Contraseña" v-model="con1" required />
       <br>
-      <input class="form-control" type="password" id="pass" placeholder="Repite la contraseña" v-model="con2" required/>
+      <input class="form-control" type="password" id="pass" placeholder="Repite la contraseña" v-model="con2"
+        required />
       <div class="col">
-        <label v-show="error != false" class="text-label text-white">Contraseña no es la misma</label>
+        <div v-if="error == true" class="text-white">
+          {{ mensaje }}
+        </div>
         <input class="btn btn-success m-3 p-2" type="button" value="Registrar" @click="register" />
         <router-link class="btn btn-primary m-3 p-2" type="button" to="/login">Ingresar</router-link>
       </div>
@@ -24,7 +27,8 @@ export default {
       con1: "",
       con2: "",
       Usuarios: [],
-      error: false
+      error: false,
+      mensaje: ""
     };
   },
   methods: {
@@ -43,6 +47,7 @@ export default {
         this.$router.push("/login");
       } else {
         this.error = true
+        this.mensaje = "Contraseña debe la misma"
       }
 
     },
